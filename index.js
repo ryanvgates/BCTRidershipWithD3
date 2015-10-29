@@ -12,42 +12,32 @@ var svg = d3.select("body").append("svg")
 	.attr("height", diameter)
 	.attr("class", "bubble");
 
-d3.csv("January2015Ridership.csv", function(error, root)
+d3.csv("January2015Ridership.csv", function(error, data)
 {
-	if (error) throw error;
+	data = data.map(function(d){ d.value = +d["Amount"]; return d; });
+	
+	var nodes = bubble.nodes({children:data}).filter(function(d) { return !d.children; });
+	
+	var bubbles = svg.append("g")
+		.attr("transform", "translate(0,0)")
+		.selectAll(".bubble")
+		.data(nodes)
+		.enter();
+		
+	bubbles.append("circle")
+		.attr("r", function(d){ return d.r; })
+		.attr("cx", function(d){ return d.x; })
+		.attr("cy", function(d){ return d.y; })
+		.style("fill", function(d) { return color(d.value); });
 
-	var node = svg.selectAll(".node")
-		.data(bubble.nodes(classes(root)))
-		.filter(function(d) { return !d.children; })
-		.enter().append("g")
-		.attr("class", "node")
-		.attr("transform", function(d) { return "translate(" + d.x + ", " + d.y + ")"; });
-
-	node.append("title")
-		.text(function(d) { return d.className + ": " + format(d.value); });
-
-	node.append("circle")
-		.attr("r", function(d) { return d.r; })
-		.style("fill", function(d) { return color(d.packageName); });
-
-	node.append("text")		
-		.attr("dy", ".3em")
-		.style("text-anchor", "middle")
-		.text(function(d) { return d.className.substring(0, d.r/3); });
+	bubbles.append("text")
+		.attr("x", function(d){ return d.x; })
+		.attr("y", function(d){ return d.y + 5; })
+		.attr("text-anchor", "middle")
+		.text(function(d){ return d["Fruit"]; })
+		.style({
+				"fill":"white",
+				"font-family":"Helvetica Neue, Helvetica, Arial, san-serif",
+				"font-size":"12px"
+		});
 });
-
-function classes(root) {
-	var classes = [];
-
-	function recurse(name, node) {
-		if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
-		else classes.push({packageName: name, className: node.name, value: node.size});
-	}
-
-	recurse(null, root);
-	return {children: classes};
-}
-
-
-
-d3.select(self.frameElement).style("height", diameter + "px");
