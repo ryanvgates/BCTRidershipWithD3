@@ -12,7 +12,7 @@ var svg = d3.select("body").append("svg")
 	.attr("height", diameter)
 	.attr("class", "bubble");
 
-d3.csv("January2015Ridership.csv", function(error, data)
+d3.csv("fruit.csv", function(error, data)
 {
 	data = data.map(function(d)
 		{ 
