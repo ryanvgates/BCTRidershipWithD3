@@ -16,7 +16,7 @@ d3.csv("January2015Ridership.csv", function(error, data)
 {
 	data = data.map(function(d)
 		{ 
-			d.value = +d[" Jan 2014"]; 
+			d.value = +d["Amount"]; 
 			return d;
 		});
 	
