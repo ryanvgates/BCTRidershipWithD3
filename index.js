@@ -20,7 +20,12 @@ d3.csv("January2015Ridership.csv", function(error, data)
 			return d;
 		});
 	
-	var nodes = bubble.nodes({children:data}).filter(function(d) { return !d.children; });
+	var nodes = bubble.nodes(
+		{children:data})
+		.filter(function(d) 
+			{ 
+				return !d.children; 
+			});
 	
 	var bubbles = svg.append("g")
 		.attr("transform", "translate(0,0)")
