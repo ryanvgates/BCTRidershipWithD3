@@ -14,7 +14,11 @@ var svg = d3.select("body").append("svg")
 
 d3.csv("January2015Ridership.csv", function(error, data)
 {
-	data = data.map(function(d){ d.value = +d["Amount"]; return d; });
+	data = data.map(function(d)
+		{ 
+			d.value = +d["Amount"]; 
+			return d;
+		});
 	
 	var nodes = bubble.nodes({children:data}).filter(function(d) { return !d.children; });
 	
