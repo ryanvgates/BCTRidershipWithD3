@@ -27,7 +27,7 @@ d3.csv("January2015Ridership.csv", function(error, root)
 
 	node.append("title")
 		.text(function(d) {
-			return d.className + ": " + format(d.value); 
+			return d.Name + ": " + format(d[" Jan 2014"]); 
 		});
 
 	node.append("circle")
