@@ -22,7 +22,7 @@ d3.csv("January2015Ridership.csv", function(error, root)
 		.enter().append("g")
 		.attr("class", "node")
 		.attr("transform", function(d) { 
-			return "translate(" + d.x + ", " + d.y + ")";
+			return "translate(" + d.Name + ", " + d[" Jan 2014"] + ")";
 		});
 
 	node.append("title")
