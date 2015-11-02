@@ -19,7 +19,6 @@ d3.csv("January2015Ridership.csv", function(error, root)
 
 	var node = svg.selectAll(".node")
 		.data(root)
-		.filter(function(d) { return !d.children; })
 		.enter().append("g")
 		.attr("class", "node")
 		.attr("transform", function(d) { return "translate(" + d.x + ", " + d.y + ")"; });
