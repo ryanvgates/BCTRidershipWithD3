@@ -22,7 +22,7 @@ d3.csv("January2015Ridership.csv", function(error, root)
 		.enter().append("g")
 		.attr("class", "node")
 		.attr("transform", function(d) { 
-			return "translate(" + d.Name + ", " + d[" Jan 2014"] + ")";
+			return "translate(" + d.x + ", " + d.y + ")";
 		});
 
 	node.append("title")
@@ -40,10 +40,7 @@ d3.csv("January2015Ridership.csv", function(error, root)
 
 	node.append("text")		
 		.attr("dy", ".3em")
-		.style("text-anchor", "middle")
-		.text(function(d) { 
-			return d.className.substring(0, d.r/3); 
-		});
+		.style("text-anchor", "middle");
 });
 
 d3.select(self.frameElement).style("height", diameter + "px");
