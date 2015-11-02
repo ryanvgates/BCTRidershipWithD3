@@ -18,7 +18,7 @@ d3.csv("January2015Ridership.csv", function(error, root)
 	if (error) throw error;
 
 	var node = svg.selectAll(".node")
-		.data(bubble.nodes(classes(root)))
+		.data(root)
 		.filter(function(d) { return !d.children; })
 		.enter().append("g")
 		.attr("class", "node")
@@ -36,19 +36,5 @@ d3.csv("January2015Ridership.csv", function(error, root)
 		.style("text-anchor", "middle")
 		.text(function(d) { return d.className.substring(0, d.r/3); });
 });
-
-function classes(root) {
-	var classes = [];
-
-	function recurse(name, node) {
-		if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
-		else classes.push({packageName: name, className: node.name, value: node.size});
-	}
-
-	recurse(null, root);
-	return {children: classes};
-}
-
-
 
 d3.select(self.frameElement).style("height", diameter + "px");
