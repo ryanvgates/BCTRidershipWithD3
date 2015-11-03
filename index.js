@@ -401,17 +401,7 @@ var inputData = [
   }
 ];
 
-var x = d3.scale.linear()
-	.domain([0, d3.max(inputData, function(d) { 
-		return d["Jan 2015"];
-	})])
-	.range([0, 420]);
-
 d3.select(".chart")
 	.selectAll("div")
 	.data(inputData, function(d) { return d["Jan 2015"];})
-	.enter().append("div")
-	.style("width", function(d) { 
-		return x(d["Jan 2015"]) + "px"; 
-	})
-	.text(function(d){ return d.Name; });
+	.enter().append("div");
