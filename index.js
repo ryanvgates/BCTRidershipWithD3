@@ -21,19 +21,26 @@ d3.csv("January2015Ridership.csv", function(error, root)
 		.data(bubble.nodes(root))
 		.enter().append("g")
 		.attr("class", "node")
-		.attr("transform", function(d) { return "translate(" + d.x + ", " + d.y + ")"; });
+		.attr("transform", function(d) { 
+			return "translate(" + d.x + ", " + d.y + ")";
+		});
 
 	node.append("title")
-		.text(function(d) { return d.className + ": " + format(d.value); });
+		.text(function(d) {
+			return d.Name + ": " + format(d[" Jan 2014"]); 
+		});
 
 	node.append("circle")
-		.attr("r", function(d) { return d.r; })
-		.style("fill", function(d) { return color(d.packageName); });
+		.attr("r", function(d) { 
+			return d.r; 
+		})
+		.style("fill", function(d) { 
+			return color(d.packageName); 
+		});
 
 	node.append("text")		
 		.attr("dy", ".3em")
-		.style("text-anchor", "middle")
-		.text(function(d) { return d.className.substring(0, d.r/3); });
+		.style("text-anchor", "middle");
 });
 
 d3.select(self.frameElement).style("height", diameter + "px");
