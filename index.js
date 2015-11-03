@@ -352,22 +352,6 @@ var inputData = [
     "FY14 YTD": 5923
   },
   {
-    "Name": "Plantation A",
-    "Jan 2015": "NIS",
-    "Jan 2014": 3845,
-    "% Change": "N/A",
-    "FY15 YTD": "NIS",
-    "FY14 YTD": 22123
-  },
-  {
-    "Name": "Plantation B",
-    "Jan 2015": "NIS",
-    "Jan 2014": 3710,
-    "% Change": "N/A",
-    "FY15 YTD": "NIS",
-    "FY14 YTD": 20343
-  },
-  {
     "Name": "Pompano Beach-Blue",
     "Jan 2015": 2622,
     "Jan 2014": 5250,
@@ -398,14 +382,6 @@ var inputData = [
     "% Change": "-8.2%",
     "FY15 YTD": 6610,
     "FY14 YTD": 7202
-  },
-  {
-    "Name": "Sunrise Lakes Shuttle",
-    "Jan 2015": "NIS",
-    "Jan 2014": 11103,
-    "% Change": "N/A",
-    "FY15 YTD": "NIS",
-    "FY14 YTD": 43821
   },
   {
     "Name": "Tamarac Red",
