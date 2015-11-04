@@ -405,7 +405,9 @@ var x = d3.scale.linear()
 	.domain([0, d3.max(inputData, function(d) { 
 		return d["Jan 2015"];
 	})])
-	.range([0, 420]);
+	.range([0, 840]);
+
+inputData = inputData.sort(function(x,y) { return y["Jan 2015"] - x["Jan 2015"]; });
 
 d3.select(".chart")
 	.selectAll("div")
