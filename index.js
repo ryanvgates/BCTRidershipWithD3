@@ -400,8 +400,3 @@ var inputData = [
     "FY14 YTD": "NIS"
   }
 ];
-
-d3.select(".chart")
-	.selectAll("div")
-	.data(inputData, function(d) { return d["Jan 2015"];})
-	.enter().append("div");
