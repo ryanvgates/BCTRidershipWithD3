@@ -413,7 +413,7 @@ d3.select(".chart")
 	.selectAll("div")
 	.data(inputData, function(d) { return d["Jan 2015"];})
 	.enter().append("div")
-	.attr("title", function(d) { return d["Jan 2015"] + " riders for January 2015."})
+	.attr("title", function(d) { return d3.format(",")(d["Jan 2015"]) + " riders for January 2015."})
 	.style("width", function(d) { 
 		return x(d["Jan 2015"]) + "px"; 
 	})
